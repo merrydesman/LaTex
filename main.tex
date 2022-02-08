@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage{color} 
+\usepackage{listings} 
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{black}} 
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+\title{Code Style}
+\author{Лещенко Леонид, ИА-032;}
+\affil{СибГУТИ, email: kallygary@yandex.ru}
+\date{Февраль 2022}
+
+\begin{document}
+
+
+
+\lstset{ 
+language=C,                 
+basicstyle=\small\sffamily, 
+numbers=left,               
+numberstyle=\tiny,           
+stepnumber=1,                   
+numbersep=0pt,                
+backgroundcolor=\color{white}, 
+showspaces=false,            
+showstringspaces=false,      
+showtabs=false,            
+frame=single,              
+tabsize=2,                 
+captionpos=t,              
+breaklines=true,           
+breakatwhitespace=false, 
+escapeinside={\%*}{*)}   
+}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{Вступление}
+Созадние Код-Стайла для C++
+
+\section{С++}
+Мы используем С++ версии 14
+
+\newpage
+  \begin{center}
+    \section*{Код-Стайл для С++}
+  \end{center}
+  
+    \setcounter{section}{0}
+    \section{Пробелы и отступы}
+  
+        \subsection{Отделяйте пробелами фигурные скобки:} 
+            \begin{lstlisting}
+    if (a == b) {
+        foo();
+    }
+            \end{lstlisting}
+    
+        \subsection{Пробелы ставятся между операторами и\\ операндами:} 
+            \begin{lstlisting}
+    int x = (a + b) * c / d + foo(); 
+            \end{lstlisting}
+    
+        \subsection{Оставляйте пустые линии между функциями и\\ между группами выражений:} 
+\begin{lstlisting}
+    void foo() {
+     ...
+    }
+                   
+    void bar() {
+     ...
+    }
+    \end{lstlisting}
+    
+    \section{Названия и переменные}
+        \subsection{Если определенная константа часто используется в вашем коде, то обозначьте её как const и всегда \\ссылайтесь на данную константу}
+            \begin{lstlisting}
+    const int VOTING_AGE = 18;
+            \end{lstlisting}
+            
+\newpage
+        \subsection{Никогда не объявляйте изменяемую глобальную\\ переменную}
+            \begin{lstlisting}
+    int func1() {
+        return 42;
+    }
+
+    void func2(int& count) {
+        count++;
+    }
+
+    int main() {
+        int count = func1();
+        func2(count);
+    }
+            \end{lstlisting}
+  
+    \section{Базовые выражения С++}
+        \subsection{Используйте для вывода текста оператор cout\\ вместо printf }
+            \begin{lstlisting}
+    cout << "Hello, world!" << endl;
+            \end{lstlisting}
+            
+        \subsection{Когда используете операторы управления вроде if/else, for, while, всегда используйте {} и соответствующие отступы, даже если тело всего оператора \\управления состоит лишь из одной строки:}
+            \begin{lstlisting}
+    if (size == 0) {
+    return;
+    } else {
+    for (int i = 0; i < 10; i++) {
+        cout << "ok" << endl;
+        }
+    }
+            \end{lstlisting}
+            
+        \subsection{Если у вас есть выражение if / else, которое\\ возвращает логическое значение, возвращайте результаты теста напрямую:}
+            \begin{lstlisting}
+    return score1 == score2;
+            \end{lstlisting}
+            
+            
+\newpage
+        \subsection{Никогда не проверяйте значения логического типа, используя == или != с true или false:}
+            \begin{lstlisting}
+    if (x) {
+    ...
+    } else {
+    ...
+    }
+            \end{lstlisting}
+            
+\newpage
+    \begin{center}
+        \section*{Вывод}
+        \addcontentsline{toc}{section}{Вывод}
+    \end{center} 
+    
+    Мы разобрали основные понятия и правила связанные с Код-стайлом С++ и составили отчет с помощью LaTex
+
+\newpage
+
+    \begin{center}
+        \section*{Список литературы}
+        \addcontentsline{toc}{section}{Список литературы}
+    \end{center} 
+    
+\begin{thebibliography}{7}
+    \bibitem{1} https://habr.com/ru/post/172091/
+    \bibitem{2} https://google.github.io/styleguide/cppguide.html
+    \bibitem{3} https://gist.github.com/azoyan/b545f7b926f1f7fb40f8c285e3f5c545
+\end{thebibliography}
+
+        
+\end{document}
